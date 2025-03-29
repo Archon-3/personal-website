@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -102,10 +101,13 @@ nav ul li a:hover::after {
     justify-content: space-between;
     align-items: center;
     min-height: 100vh;
+    gap: 2rem;
 }
+
 
 .hero-text {
     max-width: 600px;
+    flex: 1;
 }
 
 .welcome {
@@ -137,14 +139,41 @@ nav ul li a:hover::after {
     max-width: 500px;
 }
 
+/* Modified Hero Image Styles */
 .hero-image {
-    width: 45%;
-    text-align: center;
+    position: relative;
+    width: 400px;  /* Reduced from 500px */
+    height: 400px; /* Reduced from 500px */
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(45deg, #ff1f6b, #ff758c);
+    padding: 3px; /* Reduced padding for thinner border */
+    flex-shrink: 0;
+    margin-left: auto; /* Helps with alignment */
+}
+
+.hero-image::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: #0a0a0a;
+    border-radius: 50%;
+    z-index: 1;
 }
 
 .hero-image img {
-    max-width: 100%;
-    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%; /* Adjust this value to move the image up/down */
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.hero-image:hover img {
+    transform: scale(1.05);
 }
 
 /* Social and Skills Section */
@@ -227,11 +256,11 @@ nav ul li a:hover::after {
 }
 
 /* Responsive Styles */
+/* Responsive adjustments */
 @media (max-width: 992px) {
-    .hero {
-        flex-direction: column-reverse;
-        text-align: center;
-        padding-top: 150px;
+    .hero-image {
+        width: 350px;
+        height: 350px;
     }
     
     .hero-text {
@@ -247,7 +276,8 @@ nav ul li a:hover::after {
     }
     
     .hero-image {
-        width: 70%;
+        width: 400px;
+        height: 400px;
     }
     
     .connect {
@@ -262,8 +292,9 @@ nav ul li a:hover::after {
 }
 
 @media (max-width: 768px) {
-    .mobile-toggle {
-        display: block;
+    .hero-image {
+        width: 280px;
+        height: 280px;
     }
     
     nav {
@@ -304,6 +335,7 @@ nav ul li a:hover::after {
     }
     
     .hero-image {
-        width: 90%;
+        width: 300px;
+        height: 300px;
     }
 }
