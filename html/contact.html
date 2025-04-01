@@ -6,6 +6,122 @@
     <title>Document</title>
 </head>
 <body>
+    <header id="header">
+        <div class="logo">
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23333'/%3E%3Ctext x='50' y='65' font-family='Arial' font-size='30' fill='white' text-anchor='middle'%3EIN%3C/text%3E%3C/svg%3E" alt="Logo">
+            <h2>Abenezer Abebe</h2>
+        </div>
+        
+        <div class="mobile-toggle" id="mobile-toggle">☰</div>
+        
+        <nav id="nav">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="Resume.html">Resume</a></li>
+                <li><a href="#" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1>Get In Touch</h1>
+            <p>Feel free to reach out to me for collaboration, job opportunities, or just to say hello!</p>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-details">
+                        <h3>Phone</h3>
+                        <p>+251 912 345 678</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p>abenezer.abebe@example.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3>Location</h3>
+                        <p>Adama, Ethiopia</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://github.com/Archon-3" target="_blank">
+                        <span>GH</span>
+                    </a>
+                    <a href="#" target="_blank">
+                        <span>IN</span>
+                    </a>
+                    <a href="#" target="_blank">
+                        <span>TW</span>
+                    </a>
+                    <a href="#" target="_blank">
+                        <span>FB</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Send Me a Message</h2>
+                
+                <div class="success-message" id="success-message">
+                    Your message has been sent successfully! I'll get back to you soon.
+                </div>
+                
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="map-section">
+            <h2>Find Me Here</h2>
+            
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div class="map-icon">📍</div>
+                    <p>Adama Science and Technology University, Adama, Ethiopia</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="back-to-top" id="back-to-top">↑</div>
+
     
 </body>
 </html>
