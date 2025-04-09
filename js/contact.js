@@ -1,4 +1,4 @@
-// Mobile Navigation Toggle
+// Mobile menu toggle
 const mobileToggle = document.getElementById('mobile-toggle');
 const nav = document.getElementById('nav');
 
@@ -6,60 +6,69 @@ mobileToggle.addEventListener('click', () => {
     nav.classList.toggle('active');
 });
 
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!nav.contains(e.target) && !mobileToggle.contains(e.target) && nav.classList.contains('active')) {
-        nav.classList.remove('active');
+// Sticky header
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
     }
 });
 
-// Back to Top Button
-const backToTopButton = document.getElementById('back-to-top');
+// Back to top button
+const backToTop = document.getElementById('back-to-top');
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
-        backToTopButton.classList.add('active');
+        backToTop.classList.add('visible');
     } else {
-        backToTopButton.classList.remove('active');
+        backToTop.classList.remove('visible');
     }
 });
 
-backToTopButton.addEventListener('click', () => {
+backToTop.addEventListener('click', () => {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
 });
 
-// Contact Form Handling
+// Form submission
 const contactForm = document.getElementById('contact-form');
-const successMessage = document.getElementById('success-message');
+const formSuccess = document.getElementById('form-success');
+const sendAnother = document.getElementById('send-another');
 
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Get form data
+    // Get form values
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value;
     
-    // In a real application, you would send this data to a server
-    // For demo purposes, we'll just show the success message
+    // Here you would typically send the form data to a server
+    // For this example, we'll just simulate a successful submission
     
-    // Show success message
-    successMessage.style.display = 'block';
-    
-    // Reset form
-    contactForm.reset();
-    
-    // Hide success message after 5 seconds
+    // Show success message after a brief delay to simulate processing
     setTimeout(() => {
-        successMessage.style.display = 'none';
-    }, 5000);
+        contactForm.style.display = 'none';
+        formSuccess.style.display = 'block';
+        
+        // Clear form fields
+        contactForm.reset();
+    }, 1000);
 });
 
-// Form input validation
+// Send another message button
+sendAnother.addEventListener('click', () => {
+    formSuccess.style.display = 'none';
+    contactForm.style.display = 'flex';
+});
+
+// Form input animations
 const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
 
 formInputs.forEach(input => {
@@ -68,8 +77,46 @@ formInputs.forEach(input => {
     });
     
     input.addEventListener('blur', () => {
-        if (input.value === '') {
+        if (!input.value) {
             input.parentElement.classList.remove('focused');
         }
     });
+});
+
+// Initialize any input that might have values (e.g., after page refresh)
+window.addEventListener('load', () => {
+    formInputs.forEach(input => {
+        if (input.value) {
+            input.parentElement.classList.add('focused');
+        }
+    });
+});
+
+// Smooth scrolling for all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const target = document.querySelector(targetId);
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Form validation visual feedback
+contactForm.addEventListener('input', (e) => {
+    const input = e.target;
+    const isValid = input.checkValidity();
+    
+    if (isValid) {
+        input.style.borderColor = '#4CAF50';
+    } else {
+        input.style.borderColor = '#ff1f6b';
+    }
 });
