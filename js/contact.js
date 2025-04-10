@@ -10,29 +10,18 @@ mobileToggle.addEventListener('click', () => {
 const header = document.getElementById('header');
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
+    header.classList.toggle('scrolled', window.scrollY > 100);
 });
 
 // Back to top button
 const backToTop = document.getElementById('back-to-top');
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        backToTop.classList.add('visible');
-    } else {
-        backToTop.classList.remove('visible');
-    }
+    backToTop.classList.toggle('visible', window.scrollY > 300);
 });
 
 backToTop.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // Form submission
@@ -40,26 +29,32 @@ const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
 const sendAnother = document.getElementById('send-another');
 
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-    
-    // Here you would typically send the form data to a server
-    // For this example, we'll just simulate a successful submission
-    
-    // Show success message after a brief delay to simulate processing
-    setTimeout(() => {
-        contactForm.style.display = 'none';
-        formSuccess.style.display = 'block';
-        
-        // Clear form fields
-        contactForm.reset();
-    }, 1000);
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    try {
+        const res = await fetch('/send-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, subject, message }),
+        });
+
+        if (res.ok) {
+            contactForm.style.display = 'none';
+            formSuccess.style.display = 'block';
+            contactForm.reset();
+        } else {
+            alert('Failed to send message. Please try again later.');
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        alert('Something went wrong. Please try again.');
+    }
 });
 
 // Send another message button
@@ -75,7 +70,7 @@ formInputs.forEach(input => {
     input.addEventListener('focus', () => {
         input.parentElement.classList.add('focused');
     });
-    
+
     input.addEventListener('blur', () => {
         if (!input.value) {
             input.parentElement.classList.remove('focused');
@@ -83,7 +78,7 @@ formInputs.forEach(input => {
     });
 });
 
-// Initialize any input that might have values (e.g., after page refresh)
+// Highlight filled inputs on load
 window.addEventListener('load', () => {
     formInputs.forEach(input => {
         if (input.value) {
@@ -92,31 +87,22 @@ window.addEventListener('load', () => {
     });
 });
 
-// Smooth scrolling for all anchor links
+// Smooth scroll for in-page links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
-        
+
         const target = document.querySelector(targetId);
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
 
-// Form validation visual feedback
+// Input border feedback
 contactForm.addEventListener('input', (e) => {
     const input = e.target;
-    const isValid = input.checkValidity();
-    
-    if (isValid) {
-        input.style.borderColor = '#4CAF50';
-    } else {
-        input.style.borderColor = '#ff1f6b';
-    }
+    input.style.borderColor = input.checkValidity() ? '#4CAF50' : '#ff1f6b';
 });
