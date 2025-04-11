@@ -1,43 +1,41 @@
+// contact.js or server.js
 const express = require('express');
 const nodemailer = require('nodemailer');
-const bodyParser = require('body-parser');
-const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const PORT = 3000;
 
-// Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(express.static(__dirname)); // to serve your html/css/js files
+app.use(cors());
+app.use(express.json());
 
-// Email POST route
-app.post('/send-email', async (req, res) => {
+// Replace with your real Gmail and generated App Password
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'abebeabenezer808@gmail.com',
+        pass: 'bkdajdquciibpiii' // This must be the 16-character app password!
+    }
+});
+
+app.post('/send-email', (req, res) => {
     const { name, email, subject, message } = req.body;
-
-    // Transporter config (use your email and app password)
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'abebeabenezer808@gmail.com',
-            pass: 'your-app-password' // NOT your normal password
-        }
-    });
 
     const mailOptions = {
         from: email,
         to: 'abebeabenezer808@gmail.com',
-        subject: `Portfolio Contact: ${subject}`,
-        text: `From: ${name} (${email})\n\n${message}`
+        subject: subject,
+        text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     };
 
-    try {
-        await transporter.sendMail(mailOptions);
-        res.status(200).json({ message: 'Email sent successfully!' });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Failed to send email.' });
-    }
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error while sending email:', error);
+            return res.status(500).json({ success: false, error: error.message });
+        }
+        console.log('Email sent:', info.response);
+        res.status(200).json({ success: true });
+    });
 });
 
 app.listen(PORT, () => {
