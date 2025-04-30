@@ -340,3 +340,120 @@ nav ul li a:hover::after {
         height: 300px;
     }
 }
+/* Add this to your existing CSS */
+
+/* Footer Styles */
+.footer {
+    background-color: #1e2124;
+    padding: 60px 5% 20px;
+    margin-top: 100px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h4 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40px;
+    height: 2px;
+    background-color: #ff1f6b;
+}
+
+.footer-section p {
+    color: #b9b9b9;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #b9b9b9;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ff1f6b;
+    padding-left: 5px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social .social-icon {
+    width: 35px;
+    height: 35px;
+    background-color: #2a2d31;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+.footer-social .social-icon:hover {
+    background-color: #ff1f6b;
+    transform: translateY(-5px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #2a2d31;
+}
+
+.footer-bottom p {
+    color: #b9b9b9;
+    font-size: 14px;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+
+    .footer-section h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
