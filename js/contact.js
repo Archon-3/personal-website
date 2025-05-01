@@ -2,25 +2,22 @@
 const mobileToggle = document.getElementById('mobile-toggle');
 const nav = document.getElementById('nav');
 
-mobileToggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
+mobileToggle?.addEventListener('click', () => {
+    nav?.classList.toggle('active');
 });
 
 // Sticky header
 const header = document.getElementById('header');
-
 window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 100);
+    header?.classList.toggle('scrolled', window.scrollY > 100);
 });
 
 // Back to top button
 const backToTop = document.getElementById('back-to-top');
-
 window.addEventListener('scroll', () => {
-    backToTop.classList.toggle('visible', window.scrollY > 300);
+    backToTop?.classList.toggle('visible', window.scrollY > 300);
 });
-
-backToTop.addEventListener('click', () => {
+backToTop?.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
@@ -28,81 +25,123 @@ backToTop.addEventListener('click', () => {
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
 const sendAnother = document.getElementById('send-another');
+const statusMessage = document.createElement('div');
+statusMessage.className = 'status-message';
+contactForm?.appendChild(statusMessage);
 
-contactForm.addEventListener('submit', async (e) => {
+contactForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
+    
+    // Validate form
+    const formData = new FormData(contactForm);
+    const isValid = Array.from(formData.values()).every(value => value.trim() !== '');
+    if (!isValid) {
+        showStatus('Please fill in all fields', 'error');
+        return;
+    }
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const subject = document.getElementById('subject').value.trim();
-    const message = document.getElementById('message').value.trim();
+    // Show loading state
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    showStatus('Sending message...', 'info');
 
     try {
-        const res = await fetch('/send-email', {
+        const res = await fetch('/personal website/contact.php', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, subject, message }),
+            body: formData,
         });
 
-        if (res.ok) {
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        const text = await res.text();
+        console.log("Server response:", text); // Debug response
+        
+        if (text.trim() === 'success') {
             contactForm.style.display = 'none';
             formSuccess.style.display = 'block';
             contactForm.reset();
+            showStatus('Message sent successfully!', 'success');
         } else {
-            alert('Failed to send message. Please try again later.');
+            showStatus(`Failed to send message: ${text}`, 'error');
+            console.error('Server response:', text);
         }
     } catch (error) {
         console.error('Error sending message:', error);
-        alert('Something went wrong. Please try again.');
+        showStatus('Connection error. Please try again.', 'error');
+    } finally {
+        // Reset button state
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
     }
 });
 
-// Send another message button
-sendAnother.addEventListener('click', () => {
+// Show status message function
+function showStatus(message, type) {
+    statusMessage.textContent = message;
+    statusMessage.className = `status-message ${type}`;
+    statusMessage.style.display = 'block';
+    
+    if (type === 'success' || type === 'error') {
+        setTimeout(() => {
+            statusMessage.style.display = 'none';
+        }, 5000);
+    }
+}
+
+sendAnother?.addEventListener('click', () => {
     formSuccess.style.display = 'none';
     contactForm.style.display = 'flex';
+    statusMessage.style.display = 'none';
 });
 
 // Form input animations
 const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
-
 formInputs.forEach(input => {
     input.addEventListener('focus', () => {
-        input.parentElement.classList.add('focused');
+        input.parentElement?.classList.add('focused');
     });
 
     input.addEventListener('blur', () => {
         if (!input.value) {
-            input.parentElement.classList.remove('focused');
+            input.parentElement?.classList.remove('focused');
+        }
+    });
+
+    // Add validation feedback
+    input.addEventListener('input', () => {
+        const isValid = input.value.trim() !== '';
+        input.style.borderColor = isValid ? '#4CAF50' : '#ff1f6b';
+        
+        // Email specific validation
+        if (input.type === 'email') {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            input.style.borderColor = emailPattern.test(input.value) ? '#4CAF50' : '#ff1f6b';
         }
     });
 });
 
-// Highlight filled inputs on load
+// Initialize input states on load
 window.addEventListener('load', () => {
     formInputs.forEach(input => {
         if (input.value) {
-            input.parentElement.classList.add('focused');
+            input.parentElement?.classList.add('focused');
         }
     });
 });
 
-// Smooth scroll for in-page links
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
-
         const target = document.querySelector(targetId);
         if (target) {
             target.scrollIntoView({ behavior: 'smooth' });
         }
     });
-});
-
-// Input border feedback
-contactForm.addEventListener('input', (e) => {
-    const input = e.target;
-    input.style.borderColor = input.checkValidity() ? '#4CAF50' : '#ff1f6b';
 });
