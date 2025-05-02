@@ -31,7 +31,7 @@ contactForm?.appendChild(statusMessage);
 
 contactForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     // Validate form
     const formData = new FormData(contactForm);
     const isValid = Array.from(formData.values()).every(value => value.trim() !== '');
@@ -48,7 +48,7 @@ contactForm?.addEventListener('submit', async (e) => {
     showStatus('Sending message...', 'info');
 
     try {
-        const res = await fetch('/personal website/contact.php', {
+        const res = await fetch('http://127.0.0.1/personal_website/contact.php', {
             method: 'POST',
             body: formData,
         });
@@ -58,8 +58,8 @@ contactForm?.addEventListener('submit', async (e) => {
         }
 
         const text = await res.text();
-        console.log("Server response:", text); // Debug response
-        
+        console.log("Server response:", text);
+
         if (text.trim() === 'success') {
             contactForm.style.display = 'none';
             formSuccess.style.display = 'block';
@@ -84,7 +84,7 @@ function showStatus(message, type) {
     statusMessage.textContent = message;
     statusMessage.className = `status-message ${type}`;
     statusMessage.style.display = 'block';
-    
+
     if (type === 'success' || type === 'error') {
         setTimeout(() => {
             statusMessage.style.display = 'none';
@@ -115,8 +115,8 @@ formInputs.forEach(input => {
     input.addEventListener('input', () => {
         const isValid = input.value.trim() !== '';
         input.style.borderColor = isValid ? '#4CAF50' : '#ff1f6b';
-        
-        // Email specific validation
+
+        // Email-specific validation
         if (input.type === 'email') {
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             input.style.borderColor = emailPattern.test(input.value) ? '#4CAF50' : '#ff1f6b';
@@ -133,7 +133,7 @@ window.addEventListener('load', () => {
     });
 });
 
-// Smooth scroll
+// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
