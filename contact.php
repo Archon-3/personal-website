@@ -72,13 +72,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host       = 'smtp.gmail.com';         // SMTP server
         $mail->SMTPAuth   = true;                     // Enable SMTP authentication
         $mail->Username   = 'abebeabenezer808@gmail.com';   // SMTP username
-        $mail->Password   = 'your-app-password';      // SMTP password
+        $mail->Password   = 'my-app-password';      // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption
         $mail->Port       = 587;                      // TCP port to connect to
         
         // Recipients
         $mail->setFrom($email, $name);
-        $mail->addAddress('abebeabenezer808@gmail.com'); // Your email
+        $mail->addAddress('abebeabenezer808@gmail.com'); // my email
         $mail->addReplyTo($email, $name);
         
         // Content
