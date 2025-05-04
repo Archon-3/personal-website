@@ -1,2 +1,3 @@
 # personal-website
-All about me Here is my information
+It is all about my information work status and expriance.
+Check out
