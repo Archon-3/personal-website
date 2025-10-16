@@ -74,77 +74,82 @@ nav,
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
-/* Theme Toggle Button */
+/* Theme Toggle Button - Professional Top Right Placement */
 .theme-toggle {
     position: fixed;
-    bottom: 100px;
-    right: 30px;
-    width: 65px;
-    height: 65px;
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    border: none;
-    border-radius: 50%;
+    top: 25px;
+    right: 80px;
+    width: 50px;
+    height: 50px;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
-    box-shadow: 0 8px 25px rgba(255, 31, 107, 0.3);
+    z-index: 999;
+    box-shadow: 0 4px 15px var(--shadow);
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .theme-toggle:hover {
-    transform: scale(1.15) rotate(15deg);
-    box-shadow: 0 12px 35px rgba(255, 31, 107, 0.5);
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 31, 107, 0.3);
+    border-color: var(--accent-primary);
 }
 
 .theme-toggle:active {
-    transform: scale(0.9) rotate(-15deg);
+    transform: scale(0.95);
 }
 
 /* Icon Container */
 .theme-toggle-icons {
     position: relative;
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
 }
 
-/* Sun Icon */
-.sun-icon {
+/* Light Mode Icon (sun with rays) */
+.light-icon {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(0deg);
-    opacity: 0;
-    transition: all 0.4s ease;
-}
-
-[data-theme="light"] .sun-icon {
     opacity: 1;
-    transform: translate(-50%, -50%) rotate(180deg);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Moon Icon */
-.moon-icon {
+/* Dark Mode Icon (moon with stars) */
+.dark-icon {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(180deg);
-    opacity: 1;
-    transition: all 0.4s ease;
+    transform: translate(-50%, -50%) rotate(-180deg);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-[data-theme="light"] .moon-icon {
+/* Dark Theme Active - Show Moon Icon */
+[data-theme="dark"] .light-icon {
+    transform: translate(-50%, -50%) rotate(180deg);
     opacity: 0;
+}
+
+[data-theme="dark"] .dark-icon {
     transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 1;
 }
 
 /* SVG Icons Styling */
 .theme-toggle svg {
-    width: 30px;
-    height: 30px;
-    fill: white;
+    width: 26px;
+    height: 26px;
+    stroke: var(--text-primary);
+    stroke-width: 2;
+    fill: none;
+    transition: stroke 0.3s ease;
 }
 
 /* ================================
@@ -239,37 +244,53 @@ nav,
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .theme-toggle {
-        width: 55px;
-        height: 55px;
-        right: 20px;
-        bottom: 85px;
+        top: 18px;
+        right: 70px;
+        width: 45px;
+        height: 45px;
+        border-radius: 10px;
     }
     
     .theme-toggle:hover {
-        transform: scale(1.1) rotate(15deg);
+        transform: scale(1.08) translateY(-2px);
     }
     
     .theme-toggle:active {
-        transform: scale(0.9) rotate(-15deg);
+        transform: scale(0.95);
     }
     
     .theme-toggle-icons {
-        width: 25px;
-        height: 25px;
+        width: 22px;
+        height: 22px;
     }
     
     .theme-toggle svg {
-        width: 25px;
-        height: 25px;
+        width: 22px;
+        height: 22px;
+    }
+    
+    /* Hide mobile toggle when positioning */
+    .mobile-toggle {
+        z-index: 1000;
     }
 }
 
 @media (max-width: 480px) {
     .theme-toggle {
-        width: 50px;
-        height: 50px;
-        right: 15px;
-        bottom: 75px;
+        top: 18px;
+        right: 65px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .theme-toggle-icons {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .theme-toggle svg {
+        width: 20px;
+        height: 20px;
     }
 }
 

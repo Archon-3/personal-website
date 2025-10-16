@@ -3,8 +3,29 @@
 const mobileToggle = document.getElementById('mobile-toggle');
 const nav = document.getElementById('nav');
 
-mobileToggle?.addEventListener('click', () => {
+mobileToggle?.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent click from bubbling
     nav?.classList.toggle('active');
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (nav && mobileToggle) {
+        // Check if click is outside nav and mobile toggle
+        const isClickInsideNav = nav.contains(e.target);
+        const isClickOnToggle = mobileToggle.contains(e.target);
+        
+        if (!isClickInsideNav && !isClickOnToggle && nav.classList.contains('active')) {
+            nav.classList.remove('active');
+        }
+    }
+});
+
+// Close mobile menu when clicking on nav links
+nav?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        nav?.classList.remove('active');
+    });
 });
 
 // Sticky header
