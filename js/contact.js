@@ -21,7 +21,7 @@ backToTop?.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Form submission with FormSubmit (no backend needed)
+// Form submission
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
 const sendAnother = document.getElementById('send-another');
@@ -29,44 +29,55 @@ const statusMessage = document.createElement('div');
 statusMessage.className = 'status-message';
 contactForm?.appendChild(statusMessage);
 
-// Set up FormSubmit redirect dynamically
-if (contactForm) {
-    // Add hidden field for redirect after successful submission
-    const redirectField = document.createElement('input');
-    redirectField.type = 'hidden';
-    redirectField.name = '_next';
-    redirectField.value = new URL('sent.html', window.location.href).href;
-    contactForm.appendChild(redirectField);
+contactForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-    // Simple validation before letting browser submit to FormSubmit
-    contactForm.addEventListener('submit', (e) => {
-        // Only validate visible required fields (name, email, subject, message)
-        const name = document.getElementById('name')?.value || '';
-        const email = document.getElementById('email')?.value || '';
-        const subject = document.getElementById('subject')?.value || '';
-        const message = document.getElementById('message')?.value || '';
+    // Validate form
+    const formData = new FormData(contactForm);
+    const isValid = Array.from(formData.values()).every(value => value.trim() !== '');
+    if (!isValid) {
+        showStatus('Please fill in all fields', 'error');
+        return;
+    }
 
-        const isValid = name.trim() !== '' && email.trim() !== '' && 
-                       subject.trim() !== '' && message.trim() !== '';
+    // Show loading state
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    showStatus('Sending message...', 'info');
 
-        if (!isValid) {
-            e.preventDefault();
-            showStatus('Please fill in all fields', 'error');
-            return;
+    try {
+        const res = await fetch('http://127.0.0.1/personal_website/contact.php', {
+            method: 'POST',
+            body: formData,
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
         }
 
-        // Show loading state
-        const submitBtn = contactForm.querySelector('.submit-btn');
-        if (submitBtn) {
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-        }
-        showStatus('Sending message...', 'info');
+        const text = await res.text();
+        console.log("Server response:", text);
 
-        // Allow default form submission to FormSubmit
-        // FormSubmit will handle the email and redirect to sent.html
-    });
-}
+        if (text.trim() === 'success') {
+            contactForm.style.display = 'none';
+            formSuccess.style.display = 'block';
+            contactForm.reset();
+            showStatus('Message sent successfully!', 'success');
+        } else {
+            showStatus(`Failed to send message: ${text}`, 'error');
+            console.error('Server response:', text);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error);
+        showStatus('Connection error. Please try again.', 'error');
+    } finally {
+        // Reset button state
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+    }
+});
 
 // Show status message function
 function showStatus(message, type) {
