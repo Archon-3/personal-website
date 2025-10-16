@@ -109,10 +109,10 @@
 /* Glow Pulse */
 @keyframes glowPulse {
     0%, 100% {
-        box-shadow: 0 0 20px rgba(255, 31, 107, 0.3);
+        box-shadow: 0 0 20px rgba(107, 33, 168, 0.3);
     }
     50% {
-        box-shadow: 0 0 40px rgba(255, 31, 107, 0.6), 0 0 60px rgba(255, 117, 140, 0.4);
+        box-shadow: 0 0 40px rgba(107, 33, 168, 0.6), 0 0 60px rgba(139, 92, 246, 0.4);
     }
 }
 
@@ -222,7 +222,7 @@
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(20px);
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(255, 31, 107, 0.3);
+    box-shadow: 0 20px 40px rgba(107, 33, 168, 0.3);
 }
 
 /* ================================
@@ -462,13 +462,13 @@
 }
 
 .glitch-effect:hover::before {
-    color: #ff00ff;
+    color: #8b5cf6;
     animation: glitch1 0.3s infinite;
     clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
 }
 
 .glitch-effect:hover::after {
-    color: #00ffff;
+    color: #a78bfa;
     animation: glitch2 0.3s infinite;
     clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
 }

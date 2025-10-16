@@ -100,11 +100,11 @@ nav ul li a {
 }
 
 nav ul li a.active {
-    color: #ff1f6b;
+    color: var(--accent-primary);
 }
 
 nav ul li a:hover {
-    color: #ff1f6b;
+    color: var(--accent-primary);
 }
 
 nav ul li a::after {
@@ -112,7 +112,7 @@ nav ul li a::after {
     position: absolute;
     width: 0;
     height: 2px;
-    background-color: #ff1f6b;
+    background-color: var(--accent-primary);
     bottom: 0;
     left: 0;
     transition: width 0.3s;
@@ -218,7 +218,7 @@ nav ul li a:hover::after {
 
 .software-solutions:hover {
     transform: translateX(5px);
-    box-shadow: 0 10px 30px rgba(255, 31, 107, 0.2);
+    box-shadow: 0 10px 30px rgba(107, 33, 168, 0.2);
 }
 
 .software-solutions h3 {
@@ -243,7 +243,7 @@ nav ul li a:hover::after {
     height: 400px;
     border-radius: 50%;
     overflow: hidden;
-    background: linear-gradient(135deg, #ff1f6b, #ff758c, #a8e063);
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
     background-size: 200% 200%;
     animation: gradientShift 3s ease infinite;
     padding: 3px;
@@ -337,7 +337,7 @@ nav ul li a:hover::after {
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     color: white;
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(255, 31, 107, 0.4);
+    box-shadow: 0 5px 15px rgba(107, 33, 168, 0.4);
 }
 
 /* What I Do Services Section */
@@ -395,7 +395,7 @@ nav ul li a:hover::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(255, 31, 107, 0.1), rgba(255, 117, 140, 0.1));
+    background: linear-gradient(135deg, rgba(107, 33, 168, 0.1), rgba(139, 92, 246, 0.1));
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: 0;
@@ -407,15 +407,15 @@ nav ul li a:hover::after {
 
 .service-card:hover {
     transform: translateY(-10px);
-    border-color: rgba(255, 31, 107, 0.3);
-    box-shadow: 0 20px 40px rgba(255, 31, 107, 0.2);
+    border-color: rgba(107, 33, 168, 0.3);
+    box-shadow: 0 20px 40px rgba(107, 33, 168, 0.2);
 }
 
 .service-icon {
     width: 80px;
     height: 80px;
     margin: 0 auto 25px;
-    background: linear-gradient(135deg, #ff1f6b, #ff758c);
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -428,7 +428,7 @@ nav ul li a:hover::after {
 
 .service-card:hover .service-icon {
     transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 10px 30px rgba(255, 31, 107, 0.4);
+    box-shadow: 0 10px 30px rgba(107, 33, 168, 0.4);
 }
 
 .service-icon svg {
@@ -459,7 +459,7 @@ nav ul li a:hover::after {
     right: 30px;
     width: 40px;
     height: 40px;
-    background-color: #ff1f6b;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     color: white;
     border-radius: 50%;
     display: flex;
@@ -825,7 +825,7 @@ nav ul li a:hover::after {
     }
     
     .footer-section ul li a:hover {
-        background-color: rgba(255, 31, 107, 0.2);
+        background-color: rgba(107, 33, 168, 0.2);
         transform: translateY(-2px);
         padding-left: 15px;
     }

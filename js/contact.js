@@ -142,12 +142,12 @@ formInputs.forEach(input => {
     // Add validation feedback
     input.addEventListener('input', () => {
         const isValid = input.value.trim() !== '';
-        input.style.borderColor = isValid ? '#4CAF50' : '#ff1f6b';
+        input.style.borderColor = isValid ? '#4CAF50' : '#6b21a8';
 
         // Email-specific validation
         if (input.type === 'email') {
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            input.style.borderColor = emailPattern.test(input.value) ? '#4CAF50' : '#ff1f6b';
+            input.style.borderColor = emailPattern.test(input.value) ? '#4CAF50' : '#6b21a8';
         }
     });
 });

@@ -79,7 +79,7 @@ transition: 0.3s;
 }
 
 nav ul li a:hover {
-color: #ff1f6b;
+color: var(--accent-primary);
 }
 
 nav ul li a::after {
@@ -87,7 +87,7 @@ content: '';
 position: absolute;
 width: 0;
 height: 2px;
-background-color: #ff1f6b;
+background-color: var(--accent-primary);
 bottom: 0;
 left: 0;
 transition: width 0.3s;
@@ -98,7 +98,7 @@ width: 100%;
 }
 
 nav ul li a.active {
-color: #ff1f6b;
+color: var(--accent-primary);
 }
 
 nav ul li a.active::after {
@@ -200,7 +200,7 @@ top: 0;
 left: 0;
 width: 5px;
 height: 100%;
-background-color: #ff1f6b;
+background-color: var(--accent-primary);
 border-radius: 5px 0 0 5px;
 }
 
@@ -272,10 +272,10 @@ box-shadow: 0 2px 5px var(--shadow);
 }
 
 .skill-tag:hover {
-background: linear-gradient(135deg, rgba(255, 31, 107, 0.4), rgba(255, 117, 140, 0.4));
-border-color: rgba(255, 31, 107, 0.6);
+background: linear-gradient(135deg, rgba(107, 33, 168, 0.4), rgba(139, 92, 246, 0.4));
+border-color: rgba(107, 33, 168, 0.6);
 transform: translateY(-2px);
-box-shadow: 0 5px 15px rgba(255, 31, 107, 0.3);
+box-shadow: 0 5px 15px rgba(107, 33, 168, 0.3);
 }
 
 /* Projects Section */
@@ -341,14 +341,14 @@ font-weight: 500;
 }
 
 .project-links a:hover {
-color: #ff758c;
+color: #a78bfa;
 }
 
 /* Download CV Button */
 .download-cv {
 display: inline-block;
 margin-top: 30px;
-background: linear-gradient(45deg, #ff1f6b, #ff758c);
+background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
 color: white;
 padding: 12px 25px;
 border-radius: 50px;
@@ -359,7 +359,7 @@ text-align: center;
 
 .download-cv:hover {
 transform: translateY(-3px);
-box-shadow: 0 10px 20px rgba(255, 31, 107, 0.2);
+box-shadow: 0 10px 20px rgba(107, 33, 168, 0.2);
 }
 
 .back-to-top {
@@ -368,7 +368,7 @@ bottom: 30px;
 right: 30px;
 width: 40px;
 height: 40px;
-background-color: #ff1f6b;
+background-color: var(--accent-primary);
 color: white;
 border-radius: 50%;
 display: flex;

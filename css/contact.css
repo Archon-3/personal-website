@@ -78,7 +78,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ff1f6b;
+    color: var(--accent-primary);
 }
 
 nav ul li a::after {
@@ -86,7 +86,7 @@ nav ul li a::after {
     position: absolute;
     width: 0;
     height: 2px;
-    background-color: #ff1f6b;
+    background-color: var(--accent-primary);
     bottom: 0;
     left: 0;
     transition: width 0.3s;
@@ -97,7 +97,7 @@ nav ul li a:hover::after {
 }
 
 nav ul li a.active {
-    color: #ff1f6b;
+    color: var(--accent-primary);
 }
 
 nav ul li a.active::after {
@@ -288,11 +288,11 @@ nav ul li a.active::after {
 
 .form-group input:focus, .form-group textarea:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(255, 31, 107, 0.3);
+    box-shadow: 0 0 0 2px rgba(107, 33, 168, 0.3);
 }
 
 .submit-btn {
-    background: linear-gradient(45deg, #ff1f6b, #ff758c);
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     color: white;
     border: none;
     padding: 12px 25px;
@@ -306,7 +306,7 @@ nav ul li a.active::after {
 
 .submit-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 31, 107, 0.2);
+    box-shadow: 0 10px 20px rgba(107, 33, 168, 0.2);
 }
 
 /* Form Success Message */
@@ -351,7 +351,7 @@ nav ul li a.active::after {
     right: 30px;
     width: 40px;
     height: 40px;
-    background-color: #ff1f6b;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     color: white;
     border-radius: 50%;
     display: flex;

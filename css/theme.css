@@ -10,9 +10,9 @@
     --bg-tertiary: #2a2d31;
     --text-primary: #ffffff;
     --text-secondary: #b9b9b9;
-    --accent-primary: #ff1f6b;
-    --accent-secondary: #ff758c;
-    --accent-tertiary: #a8e063;
+    --accent-primary: #6b21a8;
+    --accent-secondary: #8b5cf6;
+    --accent-tertiary: #a78bfa;
     --border-color: rgba(255, 255, 255, 0.05);
     --shadow: rgba(0, 0, 0, 0.2);
     --card-bg: #1e2124;
@@ -26,9 +26,9 @@
     --bg-tertiary: #e8e8e8;
     --text-primary: #1a1a1a;
     --text-secondary: #4a4a4a;
-    --accent-primary: #ff1f6b;
-    --accent-secondary: #ff758c;
-    --accent-tertiary: #68b637;
+    --accent-primary: #6b21a8;
+    --accent-secondary: #8b5cf6;
+    --accent-tertiary: #a78bfa;
     --border-color: rgba(0, 0, 0, 0.1);
     --shadow: rgba(0, 0, 0, 0.1);
     --card-bg: #ffffff;
@@ -96,7 +96,7 @@ nav,
 
 .theme-toggle:hover {
     transform: scale(1.1) translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 31, 107, 0.3);
+    box-shadow: 0 8px 25px rgba(107, 33, 168, 0.3);
     border-color: var(--accent-primary);
 }
 
@@ -182,9 +182,9 @@ nav,
     height: 0;
     border-radius: 50%;
     background: radial-gradient(circle, 
-        rgba(255, 31, 107, 0.3) 0%, 
-        rgba(255, 117, 140, 0.2) 30%,
-        rgba(168, 224, 99, 0.1) 70%,
+        rgba(107, 33, 168, 0.3) 0%, 
+        rgba(139, 92, 246, 0.2) 30%,
+        rgba(167, 139, 250, 0.1) 70%,
         transparent 100%);
     transform: translate(-50%, -50%);
     animation: circularWipe 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -214,16 +214,16 @@ nav,
     pointer-events: none;
     width: 6px;
     height: 6px;
-    background: radial-gradient(circle, #fff 0%, rgba(255, 31, 107, 0.8) 50%, transparent 100%);
+    background: radial-gradient(circle, #fff 0%, rgba(107, 33, 168, 0.8) 50%, transparent 100%);
     border-radius: 50%;
     z-index: 9998;
     animation: sparkleAnimation 1s ease-out forwards;
-    box-shadow: 0 0 10px rgba(255, 31, 107, 0.8), 0 0 20px rgba(255, 117, 140, 0.4);
+    box-shadow: 0 0 10px rgba(107, 33, 168, 0.8), 0 0 20px rgba(139, 92, 246, 0.4);
 }
 
 .sparkle:nth-child(odd) {
-    background: radial-gradient(circle, #fff 0%, rgba(168, 224, 99, 0.8) 50%, transparent 100%);
-    box-shadow: 0 0 10px rgba(168, 224, 99, 0.8), 0 0 20px rgba(168, 224, 99, 0.4);
+    background: radial-gradient(circle, #fff 0%, rgba(167, 139, 250, 0.8) 50%, transparent 100%);
+    box-shadow: 0 0 10px rgba(167, 139, 250, 0.8), 0 0 20px rgba(167, 139, 250, 0.4);
 }
 
 @keyframes sparkleAnimation {

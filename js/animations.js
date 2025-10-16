@@ -152,7 +152,7 @@ function initInteractiveCursor() {
         position: fixed;
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, rgba(255, 31, 107, 0.4), transparent 70%);
+        background: radial-gradient(circle, rgba(107, 33, 168, 0.4), transparent 70%);
         border-radius: 50%;
         pointer-events: none;
         z-index: 9998;
@@ -196,7 +196,7 @@ function initInteractiveCursor() {
         el.addEventListener('mouseenter', () => {
             cursor.style.width = '50px';
             cursor.style.height = '50px';
-            cursor.style.backgroundColor = 'rgba(255, 31, 107, 0.2)';
+            cursor.style.backgroundColor = 'rgba(107, 33, 168, 0.2)';
             cursorGlow.style.width = '80px';
             cursorGlow.style.height = '80px';
         });
@@ -445,7 +445,7 @@ function initScrollProgress() {
         background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
         z-index: 10000;
         transition: width 0.1s ease;
-        box-shadow: 0 2px 10px rgba(255, 31, 107, 0.5);
+        box-shadow: 0 2px 10px rgba(107, 33, 168, 0.5);
     `;
     document.body.appendChild(progressBar);
     
@@ -476,11 +476,11 @@ function initFloatingShapes() {
     document.body.prepend(shapesContainer);
     
     const shapes = [
-        { size: 100, duration: 20, color: 'rgba(255, 31, 107, 0.1)' },
-        { size: 150, duration: 25, color: 'rgba(255, 117, 140, 0.08)' },
-        { size: 80, duration: 18, color: 'rgba(168, 224, 99, 0.1)' },
-        { size: 120, duration: 22, color: 'rgba(255, 31, 107, 0.06)' },
-        { size: 90, duration: 19, color: 'rgba(168, 224, 99, 0.08)' }
+        { size: 100, duration: 20, color: 'rgba(107, 33, 168, 0.1)' },
+        { size: 150, duration: 25, color: 'rgba(139, 92, 246, 0.08)' },
+        { size: 80, duration: 18, color: 'rgba(167, 139, 250, 0.1)' },
+        { size: 120, duration: 22, color: 'rgba(107, 33, 168, 0.06)' },
+        { size: 90, duration: 19, color: 'rgba(139, 92, 246, 0.08)' }
     ];
     
     shapes.forEach((shape, index) => {
@@ -592,8 +592,8 @@ function initMorphingShapes() {
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="gradient${sectionIndex}" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#ff1f6b;stop-opacity:0.5" />
-                        <stop offset="100%" style="stop-color:#a8e063;stop-opacity:0.5" />
+                        <stop offset="0%" style="stop-color:#6b21a8;stop-opacity:0.5" />
+                        <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:0.5" />
                     </linearGradient>
                 </defs>
                 <path fill="url(#gradient${sectionIndex})" d="M40,-65C52.7,-58.5,64.5,-48.5,71.1,-35.8C77.7,-23.1,79.1,-7.7,77.3,6.9C75.5,21.5,70.5,35.3,61.8,45.8C53.1,56.3,40.7,63.5,27.5,68C14.3,72.5,0.3,74.3,-13.5,72.8C-27.3,71.3,-40.9,66.5,-52.2,58C-63.5,49.5,-72.5,37.3,-76.8,23.5C-81.1,9.7,-80.7,-5.7,-75.9,-19.5C-71.1,-33.3,-61.9,-45.5,-50.2,-52.5C-38.5,-59.5,-24.3,-61.3,-11,-59.7C2.3,-58.1,27.3,-71.5,40,-65Z" transform="translate(100 100)">
