@@ -8,6 +8,7 @@
     <meta name="keywords" content="Abenezer Abebe, Software Engineer, Web Developer, UI/UX, React, Java, Portfolio">
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/theme.css">
+    <link rel="stylesheet" href="./css/animations.css">
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 
 </head>
@@ -37,12 +38,12 @@
             <h2>A software engineer.</h2>
             <p>Aspiring web developer and UI/UX enthusiast with experience in React, Java, and mobile app development. Passionate about building intuitive and efficient digital solutions. Currently a student at Adama Science and Technology University.</p>
             
-            <div class="software-solutions">
+            <div class="software-solutions animate-on-scroll">
                 <h3>Any Software Solution You Need</h3>
                 <p>From concept to deployment, I provide end-to-end software development services. Whether it's a custom web application, mobile app, or complex system integration, I deliver reliable and scalable solutions tailored to your specific needs.</p>
             </div>
             
-            <div class="connect">
+            <div class="connect animate-on-scroll">
                 <div class="social">
                     <h3>Connect with me</h3>
                     <div class="social-icons">
@@ -67,12 +68,12 @@
 
     <!-- What I Do Section -->
     <section class="services-section">
-        <div class="services-header">
-            <h2>What I Do</h2>
+        <div class="services-header animate-on-scroll">
+            <h2 class="gradient-text-animated">What I Do</h2>
             <p>Specialized services and expertise I offer to bring your ideas to life</p>
         </div>
         
-        <div class="services-grid">
+        <div class="services-grid stagger-children">
             <div class="service-card">
                 <div class="service-icon">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -145,6 +146,7 @@
     
     <div class="back-to-top" id="back-to-top">↑</div>
     <script src="./js/theme.js"></script>
+    <script src="./js/animations.js" defer></script>
     <script src="./js/home.js" defer></script>
 </body>
 </html>
