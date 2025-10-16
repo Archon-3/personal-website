@@ -1,21 +1,21 @@
- // Mobile menu toggle
- const mobileToggle = document.getElementById('mobile-toggle');
- const nav = document.getElementById('nav');
- 
- mobileToggle.addEventListener('click', () => {
-     nav.classList.toggle('active');
- });
- 
- // Sticky header
- const header = document.getElementById('header');
- 
- window.addEventListener('scroll', () => {
-     if (window.scrollY > 100) {
-         header.classList.add('scrolled');
-     } else {
-         header.classList.remove('scrolled');
-     }
- });
+// Mobile menu toggle
+const mobileToggle = document.getElementById('mobile-toggle');
+const nav = document.getElementById('nav');
+
+mobileToggle?.addEventListener('click', () => {
+    nav?.classList.toggle('active');
+});
+
+// Sticky header
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
  
  // Back to top button
  const backToTop = document.getElementById('back-to-top');
@@ -28,12 +28,12 @@
      }
  });
  
- backToTop.addEventListener('click', () => {
-     window.scrollTo({
-         top: 0,
-         behavior: 'smooth'
-     });
- });
+backToTop?.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
  
  // Smooth scrolling for all anchor links
  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
