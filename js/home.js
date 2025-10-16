@@ -1,10 +1,10 @@
- // Mobile menu toggle
- const mobileToggle = document.getElementById('mobile-toggle');
- const nav = document.getElementById('nav');
- 
- mobileToggle.addEventListener('click', () => {
-     nav.classList.toggle('active');
- });
+// Mobile menu toggle
+const mobileToggle = document.getElementById('mobile-toggle');
+const nav = document.getElementById('nav');
+
+mobileToggle?.addEventListener('click', () => {
+    nav?.classList.toggle('active');
+});
  
  // Sticky header
  const header = document.getElementById('header');
@@ -17,23 +17,23 @@
      }
  });
  
- // Back to top button
- const backToTop = document.getElementById('back-to-top');
- 
- window.addEventListener('scroll', () => {
-     if (window.scrollY > 300) {
-         backToTop.classList.add('visible');
-     } else {
-         backToTop.classList.remove('visible');
-     }
- });
- 
- backToTop.addEventListener('click', () => {
-     window.scrollTo({
-         top: 0,
-         behavior: 'smooth'
-     });
- });
+// Back to top button
+const backToTop = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTop?.classList.add('visible');
+    } else {
+        backToTop?.classList.remove('visible');
+    }
+});
+
+backToTop?.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
  
  // Smooth scrolling for all anchor links
  document.querySelectorAll('a[href^="#"]').forEach(anchor => {

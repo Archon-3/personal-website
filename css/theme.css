@@ -1,0 +1,279 @@
+/* ================================
+   THEME SWITCHER - Light/Dark Mode
+   ================================ */
+
+/* CSS Variables for Theming */
+:root {
+    /* Dark Mode Colors (Default) */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1e2124;
+    --bg-tertiary: #2a2d31;
+    --text-primary: #ffffff;
+    --text-secondary: #b9b9b9;
+    --accent-primary: #ff1f6b;
+    --accent-secondary: #ff758c;
+    --accent-tertiary: #a8e063;
+    --border-color: rgba(255, 255, 255, 0.05);
+    --shadow: rgba(0, 0, 0, 0.2);
+    --card-bg: #1e2124;
+    --header-bg: rgba(30, 33, 36, 0.95);
+}
+
+/* Light Mode Colors */
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --bg-tertiary: #e8e8e8;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --accent-primary: #ff1f6b;
+    --accent-secondary: #ff758c;
+    --accent-tertiary: #68b637;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow: rgba(0, 0, 0, 0.1);
+    --card-bg: #ffffff;
+    --header-bg: rgba(255, 255, 255, 0.95);
+}
+
+/* Make text bolder in light mode */
+[data-theme="light"] body {
+    font-weight: 500;
+}
+
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6 {
+    font-weight: 700;
+}
+
+[data-theme="light"] .hero h1 {
+    font-weight: 800;
+}
+
+[data-theme="light"] p,
+[data-theme="light"] span,
+[data-theme="light"] a {
+    font-weight: 500;
+}
+
+/* Smooth Transitions */
+body,
+header,
+.hero,
+.service-card,
+.feature-card,
+.contact-form-container,
+.info-item,
+.footer,
+nav,
+.mobile-toggle,
+.back-to-top {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 8px 25px rgba(255, 31, 107, 0.3);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.15) rotate(15deg);
+    box-shadow: 0 12px 35px rgba(255, 31, 107, 0.5);
+}
+
+.theme-toggle:active {
+    transform: scale(0.9) rotate(-15deg);
+}
+
+/* Icon Container */
+.theme-toggle-icons {
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+/* Sun Icon */
+.sun-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+[data-theme="light"] .sun-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+/* Moon Icon */
+.moon-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+    opacity: 1;
+    transition: all 0.4s ease;
+}
+
+[data-theme="light"] .moon-icon {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+/* SVG Icons Styling */
+.theme-toggle svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+
+/* ================================
+   CIRCULAR WIPE ANIMATION EFFECT
+   ================================ */
+
+/* Theme Transition Overlay */
+.lighting-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+}
+
+/* Circular Wipe Effect */
+.lighting-overlay.active {
+    opacity: 1;
+}
+
+.lighting-overlay.active::before {
+    content: '';
+    position: absolute;
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, 
+        rgba(255, 31, 107, 0.3) 0%, 
+        rgba(255, 117, 140, 0.2) 30%,
+        rgba(168, 224, 99, 0.1) 70%,
+        transparent 100%);
+    transform: translate(-50%, -50%);
+    animation: circularWipe 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes circularWipe {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    50% {
+        width: 300vmax;
+        height: 300vmax;
+        opacity: 0.8;
+    }
+    100% {
+        width: 300vmax;
+        height: 300vmax;
+        opacity: 0;
+    }
+}
+
+/* Sparkle Effect - Enhanced */
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #fff 0%, rgba(255, 31, 107, 0.8) 50%, transparent 100%);
+    border-radius: 50%;
+    z-index: 9998;
+    animation: sparkleAnimation 1s ease-out forwards;
+    box-shadow: 0 0 10px rgba(255, 31, 107, 0.8), 0 0 20px rgba(255, 117, 140, 0.4);
+}
+
+.sparkle:nth-child(odd) {
+    background: radial-gradient(circle, #fff 0%, rgba(168, 224, 99, 0.8) 50%, transparent 100%);
+    box-shadow: 0 0 10px rgba(168, 224, 99, 0.8), 0 0 20px rgba(168, 224, 99, 0.4);
+}
+
+@keyframes sparkleAnimation {
+    0% {
+        transform: translate(0, 0) scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(calc(var(--tx) * 0.5), calc(var(--ty) * 0.5)) scale(1.5) rotate(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .theme-toggle {
+        width: 55px;
+        height: 55px;
+        right: 20px;
+        bottom: 85px;
+    }
+    
+    .theme-toggle:hover {
+        transform: scale(1.1) rotate(15deg);
+    }
+    
+    .theme-toggle:active {
+        transform: scale(0.9) rotate(-15deg);
+    }
+    
+    .theme-toggle-icons {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .theme-toggle svg {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .theme-toggle {
+        width: 50px;
+        height: 50px;
+        right: 15px;
+        bottom: 75px;
+    }
+}
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}

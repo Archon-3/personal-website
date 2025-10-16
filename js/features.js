@@ -3,8 +3,8 @@
 const mobileToggle = document.getElementById('mobile-toggle');
 const nav = document.getElementById('nav');
 
-mobileToggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
+mobileToggle?.addEventListener('click', () => {
+    nav?.classList.toggle('active');
 });
 
 // Sticky header
@@ -12,9 +12,9 @@ const header = document.getElementById('header');
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
-        header.classList.add('scrolled');
+        header?.classList.add('scrolled');
     } else {
-        header.classList.remove('scrolled');
+        header?.classList.remove('scrolled');
     }
 });
 
@@ -23,13 +23,13 @@ const backToTop = document.getElementById('back-to-top');
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
-        backToTop.classList.add('visible');
+        backToTop?.classList.add('visible');
     } else {
-        backToTop.classList.remove('visible');
+        backToTop?.classList.remove('visible');
     }
 });
 
-backToTop.addEventListener('click', () => {
+backToTop?.addEventListener('click', () => {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'

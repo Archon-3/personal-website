@@ -21,81 +21,88 @@ backToTop?.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Form submission
+// Form submission with FormSubmit
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
 const sendAnother = document.getElementById('send-another');
-const statusMessage = document.createElement('div');
-statusMessage.className = 'status-message';
-contactForm?.appendChild(statusMessage);
 
+// Form submission handler
 contactForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
-
+    
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    
     // Validate form
     const formData = new FormData(contactForm);
-    const isValid = Array.from(formData.values()).every(value => value.trim() !== '');
-    if (!isValid) {
-        showStatus('Please fill in all fields', 'error');
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+    
+    if (!name || !email || !subject || !message) {
+        alert('Please fill in all fields');
         return;
     }
-
+    
     // Show loading state
-    const submitBtn = contactForm.querySelector('.submit-btn');
-    const originalBtnText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
-    showStatus('Sending message...', 'info');
-
+    if (submitBtn) {
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+    }
+    
     try {
-        const res = await fetch('http://127.0.0.1/personal_website/contact.php', {
+        // Send to FormSubmit
+        const response = await fetch('https://formsubmit.co/abebeabenezer808@gmail.com', {
             method: 'POST',
-            body: formData,
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                subject: subject,
+                message: message,
+                _subject: 'New Contact Form Submission',
+                _template: 'table',
+                _captcha: 'false'
+            })
         });
-
-        if (!res.ok) {
-            throw new Error(`HTTP error! status: ${res.status}`);
-        }
-
-        const text = await res.text();
-        console.log("Server response:", text);
-
-        if (text.trim() === 'success') {
+        
+        if (response.ok) {
+            // Show success message
             contactForm.style.display = 'none';
             formSuccess.style.display = 'block';
             contactForm.reset();
-            showStatus('Message sent successfully!', 'success');
         } else {
-            showStatus(`Failed to send message: ${text}`, 'error');
-            console.error('Server response:', text);
+            throw new Error('Failed to send');
         }
     } catch (error) {
-        console.error('Error sending message:', error);
-        showStatus('Connection error. Please try again.', 'error');
-    } finally {
+        console.error('Error:', error);
+        alert('Failed to send message. Please try again or email me directly at abebeabenezer808@gmail.com');
+        
         // Reset button state
-        submitBtn.textContent = originalBtnText;
-        submitBtn.disabled = false;
+        if (submitBtn) {
+            submitBtn.textContent = 'Send Message';
+            submitBtn.disabled = false;
+        }
     }
 });
 
-// Show status message function
-function showStatus(message, type) {
-    statusMessage.textContent = message;
-    statusMessage.className = `status-message ${type}`;
-    statusMessage.style.display = 'block';
-
-    if (type === 'success' || type === 'error') {
-        setTimeout(() => {
-            statusMessage.style.display = 'none';
-        }, 5000);
-    }
-}
-
+// Send another message button
 sendAnother?.addEventListener('click', () => {
-    formSuccess.style.display = 'none';
-    contactForm.style.display = 'flex';
-    statusMessage.style.display = 'none';
+    if (formSuccess && contactForm) {
+        formSuccess.style.display = 'none';
+        contactForm.style.display = 'flex';
+        contactForm.reset();
+        
+        // Reset button state
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        if (submitBtn) {
+            submitBtn.textContent = 'Send Message';
+            submitBtn.disabled = false;
+        }
+    }
 });
 
 // Form input animations
@@ -124,8 +131,9 @@ formInputs.forEach(input => {
     });
 });
 
-// Initialize input states on load
+// Initialize on page load
 window.addEventListener('load', () => {
+    // Initialize input states
     formInputs.forEach(input => {
         if (input.value) {
             input.parentElement?.classList.add('focused');

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me - Abenezer Abebe</title>
     <link rel="stylesheet" href="../css/contact.css">
+    <link rel="stylesheet" href="../css/theme.css">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 
 </head>
@@ -102,6 +103,9 @@
                 <h2>Send Me a Message</h2>
                 
                 <form id="contact-form" class="contact-form" method="POST">
+                    <!-- Form will be submitted via JavaScript -->
+                    <input type="text" name="_honey" style="display:none">
+                    
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
@@ -136,6 +140,7 @@
     </div>
 
     <div class="back-to-top" id="back-to-top">↑</div>
+    <script src="../js/theme.js"></script>
     <script src="../js/contact.js" defer></script>
 </body>
 </html>
