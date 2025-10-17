@@ -58,6 +58,10 @@ font-weight: 600;
 letter-spacing: 1px;
 }
 
+nav {
+padding-right: 100px;
+}
+
 nav ul {
 display: flex;
 list-style: none;

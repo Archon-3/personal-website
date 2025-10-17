@@ -80,6 +80,10 @@ header.scrolled {
     }
 }
 
+nav {
+    padding-right: 100px;
+}
+
 nav ul {
     display: flex;
     list-style: none;
