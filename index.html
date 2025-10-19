@@ -6,9 +6,16 @@
     <title>Abenezer Abebe - Software Engineer Portfolio</title>
     <meta name="description" content="Portfolio of Abenezer Abebe - Software Engineer specializing in web development, UI/UX design, and mobile applications. Student at Adama Science and Technology University.">
     <meta name="keywords" content="Abenezer Abebe, Software Engineer, Web Developer, UI/UX, React, Java, Portfolio">
-    <link rel="stylesheet" href="./css/home.css?v=2.0">
-    <link rel="stylesheet" href="./css/theme.css?v=2.0">
-    <link rel="stylesheet" href="./css/animations.css?v=2.0">
+    <!-- Theme Flash Prevention -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <link rel="stylesheet" href="./css/home.css?v=3.0">
+    <link rel="stylesheet" href="./css/theme.css?v=3.0">
+    <link rel="stylesheet" href="./css/animations.css?v=3.0">
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 
 </head>
@@ -36,7 +43,11 @@
             <p class="welcome">WELCOME TO MY WORLD</p>
             <h1>Hi, I'm <span class="accent">Abenezer Abebe</span></h1>
             <h2>A software engineer.</h2>
-            <p>Aspiring web developer and UI/UX enthusiast with experience in React, Java, and mobile app development. Passionate about building intuitive and efficient digital solutions. Currently a student at Adama Science and Technology University.</p>
+            <p>A passionate Software Engineer, Mobile App Developer, and UI/UX Designer dedicated to building smart, user-focused digital solutions.
+
+I craft modern web and mobile applications using technologies like React.js, React Native, Node.js, and PHP, blending clean design with solid functionality. My projects range from AI-powered verification systems to e-commerce and management platforms, all built with innovation and impact in mind.
+
+I’m always exploring new technologies and creative ideas that make tech more human, meaningful, and future-ready.</p>
             
             <div class="software-solutions animate-on-scroll">
                 <h3>Any Software Solution You Need</h3>
@@ -62,7 +73,7 @@
         </div>
         
         <div class="hero-image">
-            <img src="./image/ppp.jpg" alt="Developer Portrait">
+            <img src="./image/pp 2.jpg" alt="Developer Portrait">
         </div>
     </section>
 
@@ -145,8 +156,8 @@
     </footer>
     
     <div class="back-to-top" id="back-to-top">↑</div>
-    <script src="./js/theme.js?v=2.0"></script>
-    <script src="./js/animations.js?v=2.0" defer></script>
-    <script src="./js/home.js?v=2.0" defer></script>
+    <script src="./js/theme.js?v=3.0"></script>
+    <script src="./js/animations.js?v=3.0" defer></script>
+    <script src="./js/home.js?v=3.0" defer></script>
 </body>
 </html>

@@ -292,7 +292,7 @@ nav ul li a.active::after {
 
 .form-group input:focus, .form-group textarea:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(107, 33, 168, 0.3);
+    box-shadow: 0 0 0 2px rgba(45, 52, 54, 0.3);
 }
 
 .submit-btn {
@@ -310,7 +310,7 @@ nav ul li a.active::after {
 
 .submit-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(107, 33, 168, 0.2);
+    box-shadow: 0 10px 20px rgba(45, 52, 54, 0.2);
 }
 
 /* Form Success Message */

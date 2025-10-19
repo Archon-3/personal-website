@@ -14,11 +14,9 @@ const setTheme = (theme) => {
     localStorage.setItem('theme', theme);
 };
 
-// Initialize theme on page load
-document.addEventListener('DOMContentLoaded', () => {
-    const currentTheme = getTheme();
-    setTheme(currentTheme);
-});
+// Initialize theme IMMEDIATELY to prevent flash
+const currentTheme = getTheme();
+setTheme(currentTheme);
 
 // Create theme toggle button
 function createThemeToggle() {

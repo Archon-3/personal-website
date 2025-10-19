@@ -276,10 +276,10 @@ box-shadow: 0 2px 5px var(--shadow);
 }
 
 .skill-tag:hover {
-background: linear-gradient(135deg, rgba(107, 33, 168, 0.4), rgba(139, 92, 246, 0.4));
-border-color: rgba(107, 33, 168, 0.6);
+background: linear-gradient(135deg, rgba(45, 52, 54, 0.4), rgba(99, 110, 114, 0.4));
+border-color: rgba(45, 52, 54, 0.6);
 transform: translateY(-2px);
-box-shadow: 0 5px 15px rgba(107, 33, 168, 0.3);
+box-shadow: 0 5px 15px rgba(45, 52, 54, 0.3);
 }
 
 /* Projects Section */
@@ -363,7 +363,7 @@ text-align: center;
 
 .download-cv:hover {
 transform: translateY(-3px);
-box-shadow: 0 10px 20px rgba(107, 33, 168, 0.2);
+box-shadow: 0 10px 20px rgba(45, 52, 54, 0.2);
 }
 
 .back-to-top {

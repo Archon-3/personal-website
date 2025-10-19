@@ -109,10 +109,10 @@
 /* Glow Pulse */
 @keyframes glowPulse {
     0%, 100% {
-        box-shadow: 0 0 20px rgba(107, 33, 168, 0.3);
+        box-shadow: 0 0 20px rgba(197, 205, 209, 0.3);
     }
     50% {
-        box-shadow: 0 0 40px rgba(107, 33, 168, 0.6), 0 0 60px rgba(139, 92, 246, 0.4);
+        box-shadow: 0 0 40px rgba(197, 205, 209, 0.6), 0 0 60px rgba(157, 168, 174, 0.4);
     }
 }
 
@@ -222,7 +222,7 @@
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(20px);
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(107, 33, 168, 0.3);
+    box-shadow: 0 20px 40px rgba(197, 205, 209, 0.3);
 }
 
 /* ================================

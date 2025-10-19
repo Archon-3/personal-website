@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me - Abenezer Abebe</title>
-    <link rel="stylesheet" href="../css/contact.css?v=2.0">
-    <link rel="stylesheet" href="../css/theme.css?v=2.0">
-    <link rel="stylesheet" href="../css/animations.css?v=2.0">
+    <!-- Theme Flash Prevention -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <link rel="stylesheet" href="../css/contact.css?v=3.0">
+    <link rel="stylesheet" href="../css/theme.css?v=3.0">
+    <link rel="stylesheet" href="../css/animations.css?v=3.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 
 </head>
@@ -144,8 +151,8 @@
     </footer>
 
     <div class="back-to-top" id="back-to-top">↑</div>
-    <script src="../js/theme.js?v=2.0"></script>
-    <script src="../js/animations.js?v=2.0" defer></script>
-    <script src="../js/contact.js?v=2.0" defer></script>
+    <script src="../js/theme.js?v=3.0"></script>
+    <script src="../js/animations.js?v=3.0" defer></script>
+    <script src="../js/contact.js?v=3.0" defer></script>
 </body>
 </html>
