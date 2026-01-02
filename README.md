@@ -5,7 +5,7 @@ Welcome to my GitHub.
 This space is primarily used to host and maintain my projects, experiments, and academic work.  
 For a complete view of my background, skills, experience, and portfolio, please visit my personal website:
 
-🌐 **Personal Website:** [https://your-website-link-here](https://archon-3.github.io/personal-website/)
+🌐 **Personal Website:** https://archon-3.github.io/personal-website/
 
 ---
 
